@@ -1,0 +1,260 @@
+$dark-text: hsl(229, 25%, 31%);
+$score-text: hsl(229, 64%, 46%);
+$header-outline: hsl(217, 16%, 45%);
+$button-color: #e7edfb;
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,600;0,700;1,600;1,700&display=swap");
+
+* {
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background: radial-gradient(
+    circle at 50% -50%,
+    hsl(214, 47%, 23%) 0%,
+    hsl(237, 49%, 15%) 100%
+  );
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-box {
+  margin: 30px 5%;
+  border: 3px solid $header-outline;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(min(90%, 700px));
+  height: calc(min(13%, 140px));
+}
+.score-box {
+  margin: 10px;
+  border-radius: 0.3rem;
+  background-color: white;
+  width: 25%;
+  height: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  .score-header {
+    color: $score-text;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    margin-top: 0.6rem;
+  }
+  .score {
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+    color: $header-outline;
+    font-size: 2.4rem;
+  }
+}
+.logo-box {
+  margin: 10px 20px;
+  background: url(./images/logo.svg);
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: left center;
+  width: 40%;
+  height: 50%;
+}
+.game-ui {
+    width: 16rem;
+    height: 0.866 * 16rem; //altezza di un triangolo equilatero
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-rows: 33.33% 33.33% 33.33%;
+    background: url(./images/bg-triangle.svg);
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+    margin: 50px 0 5rem 0;
+}
+.circle {
+    place-self: center;
+    height: 5.8rem;
+    width: 5.8rem;
+    border-radius: 50%;
+    background-color: $button-color;
+    box-shadow: inset 0 5px rgb(212, 216, 228);
+    z-index: 10;
+}
+.circle:hover {
+    cursor: pointer;
+}
+.outer-circle {
+    box-sizing: border-box;
+    place-self: center;
+    height: 7.5rem;
+    width: 7.5rem;
+    border-radius: 50%;
+    background: $button-color;
+}
+.paper {
+    grid-column: 1;
+    grid-row: 1;
+    background: url(./images/icon-paper.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $button-color;
+    background-size: 45%;
+}
+.paper-outer {
+    grid-column: 1;
+    grid-row: 1;
+    background-color: #4663f6;
+    box-shadow: 0px 5px 0px rgb(49, 67, 170);
+}
+.scissors {
+    grid-column: 3;
+    grid-row: 1;
+    background: url(./images/icon-scissors.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $button-color;
+    background-size: 45%;
+}
+.scissors-outer {
+    grid-column: 3;
+    grid-row: 1;
+    background-color: #fca504;
+    box-shadow: 0px 5px 0px rgb(216, 119, 39);
+}
+.rock {
+    grid-column: 2;
+    grid-row: 3;
+    background: url(./images/icon-rock.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $button-color;
+    background-size: 45%;
+}
+.rock-outer {
+    grid-column: 2;
+    grid-row: 3;
+    background-color: #da3b56;
+    box-shadow: 0px 5px 0px rgb(161, 26, 21);
+}
+.rules-button {
+    width: 125px;
+    height: 40px;
+    margin-bottom: 60px;
+    button {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        background: transparent;
+        color: $button-color;
+        border: 2px solid rgb(179, 184, 194);
+        letter-spacing: 3px;
+        font-size: 16px;
+        text-align: center;
+    }
+    button:hover {
+        cursor: pointer;
+    }
+}
+
+//rules overlay
+
+#rules-overlay {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.322);
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    display: none;
+}
+.rules-white-box {
+    background-color: hsla(256, 100, 100, 1);
+    width: 100%;
+    height: 100%;
+    z-index: 110;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.rules-title {
+    margin-top: 125px;
+    font-size: 30px;
+    font-weight: 700;
+    color: $dark-text;
+}
+.rules-image {
+    height: 300px;
+    width: 300px;
+    background: url(./images/image-rules.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-bottom: 30px;
+}
+.cross {
+    background: url(./images/icon-close.svg);
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px;
+    background-position: center;
+    margin-bottom: 65px;
+}
+.cross:hover {
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+    :root {
+        font-size: 25px;
+    }
+    .header-box {
+        height: 140px;
+        border-radius: 1rem;
+    }
+    .logo-box {
+        height: 70%;
+    }
+    .rules-button {
+        position: absolute;
+        bottom: 0px;
+        right: 20px;
+        margin-bottom: 35px;
+    }
+    .rules-white-box {
+        height: 400px;
+        width: 375px;
+        margin-block: auto;
+        border-radius: 10px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 1fr 1fr;
+    }
+    .rules-title {
+        grid-row: 1;
+        grid-column: 1;
+        margin-block: auto;
+        margin-left: 20px;
+    }
+    .cross {
+        grid-row: 1;
+        grid-column: 2;
+        margin-block: auto;
+        place-self: center right;
+        margin-right: 20px;
+    }
+    .rules-image {
+        grid-column: 1 / span 2;
+        grid-row: 2;
+        place-self: center;
+    }
+}
