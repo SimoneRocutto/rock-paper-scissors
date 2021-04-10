@@ -31,7 +31,7 @@ Users should be able to:
 
 Desktop version
 
-![Desktop version](https://github.com/SimoneRocutto/rock-paper-scissors/blob/master/result/desktop.png?raw=true)
+![Desktop version](https://github.com/SimoneRocutto/rock-paper-scissors/blob/master/results/desktop.png?raw=true)
 
 Mobile version
 
