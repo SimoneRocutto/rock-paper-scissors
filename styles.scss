@@ -2,6 +2,12 @@ $dark-text: hsl(229, 25%, 31%);
 $score-text: hsl(229, 64%, 46%);
 $header-outline: hsl(217, 16%, 45%);
 $button-color: #e7edfb;
+$rock-border: #da3b56;
+$rock-border-shadow: rgb(161, 26, 21);
+$paper-border: #4663f6;
+$paper-border-shadow: rgb(49, 67, 170);
+$scissors-border: #fca504;
+$scissors-border-shadow: rgb(216, 119, 39);
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,600;0,700;1,600;1,700&display=swap");
 
 * {
@@ -22,6 +28,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  color: $button-color
 }
 .header-box {
   margin: 30px 5%;
@@ -65,7 +72,14 @@ body {
   width: 40%;
   height: 50%;
 }
-.game-ui {
+.game-ui-wrapper {
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-ui {
     width: 16rem;
     height: 0.866 * 16rem; //altezza di un triangolo equilatero
     display: grid;
@@ -75,7 +89,7 @@ body {
     background-repeat: no-repeat;
     background-size: 80%;
     background-position: center;
-    margin: 50px 0 5rem 0;
+    margin: auto 0 auto 0;
 }
 .circle {
     place-self: center;
@@ -109,8 +123,8 @@ body {
 .paper-outer {
     grid-column: 1;
     grid-row: 1;
-    background-color: #4663f6;
-    box-shadow: 0px 5px 0px rgb(49, 67, 170);
+    background-color: $paper-border;
+    box-shadow: 0px 5px 0px $paper-border-shadow;
 }
 .scissors {
     grid-column: 3;
@@ -124,8 +138,8 @@ body {
 .scissors-outer {
     grid-column: 3;
     grid-row: 1;
-    background-color: #fca504;
-    box-shadow: 0px 5px 0px rgb(216, 119, 39);
+    background-color: $scissors-border;
+    box-shadow: 0px 5px 0px $scissors-border-shadow;
 }
 .rock {
     grid-column: 2;
@@ -139,8 +153,8 @@ body {
 .rock-outer {
     grid-column: 2;
     grid-row: 3;
-    background-color: #da3b56;
-    box-shadow: 0px 5px 0px rgb(161, 26, 21);
+    background-color: $rock-border;
+    box-shadow: 0px 5px 0px $rock-border-shadow;
 }
 .rules-button {
     width: 125px;
@@ -213,16 +227,184 @@ body {
     cursor: pointer;
 }
 
-@media only screen and (min-width: 600px) {
+// after picking styles
+
+.main-ui {
+    letter-spacing: 2px;
+    font-size: 0.95rem;
+}
+.pickedwrapper {
+    display: grid;
+    height: 90%;
+    width: 100%;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 1fr 1fr;
+}
+.pickedbox {
+    width: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-bottom: 5px;
+}
+.first-sign {
+    grid-column: 1;
+}
+.second-sign {
+    grid-column: 2;
+}
+.pickedtitle {
+    width: 150%;
+    text-align: center;
+}
+.pickedcircle {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    margin-bottom: 30px;
+}
+.pickedouter {
+    grid-row: 1;
+    grid-column: 1;
+    box-sizing: border-box;
+    place-self: center;
+    height: 7.5rem;
+    width: 7.5rem;
+    border-radius: 50%;
+    background-color: transparent;
+    // background: $paper-border;
+    // box-shadow: 0px 5px 0px $paper-border-shadow;
+}
+.pickedinner {
+    grid-row: 1;
+    grid-column: 1;
+    place-self: center;
+    height: 5.8rem;
+    width: 5.8rem;
+    border-radius: 50%;
+    box-shadow: inset 0 5% rgb(212, 216, 228);
+    z-index: 10;
+    // background: url(./images/icon-paper.svg);
+    // background-repeat: no-repeat;
+    // background-position: center;
+    background-color: rgba(0, 0, 0, 0.103);
+    // background-size: 45%;
+}
+.picked-rock {
+    .pickedouter {
+        background: $rock-border;
+        box-shadow: 0px 0.4rem 0px $rock-border-shadow;
+    }
+    .pickedinner {
+        background: url(./images/icon-rock.svg);
+        background-color: $button-color;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: $button-color;
+        background-size: 45%;
+    }
+}
+.picked-paper {
+    .pickedouter {
+        background: $paper-border;
+        box-shadow: 0px 0.4rem 0px $paper-border-shadow;
+    }
+    .pickedinner {
+        background: url(./images/icon-paper.svg);
+        background-color: $button-color;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: $button-color;
+        background-size: 45%;
+        box-shadow: inset 0 0.4rem rgb(212, 216, 228);  
+    }
+}
+.picked-scissors {
+    .pickedouter {
+        background: $scissors-border;
+        box-shadow: 0px 0.4rem 0px $scissors-border-shadow;
+    }
+    .pickedinner {
+        background: url(./images/icon-scissors.svg);
+        background-color: $button-color;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: $button-color;
+        background-size: 45%;
+        box-shadow: inset 0 0.4rem rgb(212, 216, 228);  
+    }
+}
+
+.winning-circle::before {
+    content: "";
+    display: block;
+    border-radius: 50%;
+    grid-column: 1;
+    grid-row: 1;
+    place-self: center;
+    height: 250%;
+    width: 250%;
+    z-index: -10;
+    background: radial-gradient(circle,
+        rgba(252, 252, 252, 0.075) 0% 43%,
+        rgba(255, 255, 255, 0.050) 43% 58%,
+        rgba(255, 255, 255, 0.014) 58% 100%
+      );
+      background-position: center;
+      background-size: 100%;
+}
+
+.pickedresultbox {
+    grid-row: 2;
+    grid-column: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.result-title {
+    font-size: 55px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+.play-again {
+    border-radius: 10px;
+    width: 200px;
+    height: 45px;
+    background-color: $button-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    div {
+        color: $dark-text;
+        letter-spacing: 2px;
+        font-size: 16px;
+        transition: color 0.2s;
+    }
+}
+.play-again:hover {
+    div {
+        color: rgb(216, 66, 66);
+    }
+}
+
+@media only screen and (min-width: 1050px) {
     :root {
         font-size: 25px;
     }
     .header-box {
-        height: 140px;
+        margin-top: 45px;
+        height: 160px;
         border-radius: 1rem;
     }
     .logo-box {
         height: 70%;
+    }
+    .game-ui-wrapper {
+        margin-bottom: 55px;
     }
     .rules-button {
         position: absolute;
@@ -256,5 +438,37 @@ body {
         grid-column: 1 / span 2;
         grid-row: 2;
         place-self: center;
+    }
+
+    // after picking styles
+
+    .pickedwrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .second-sign {
+        order: 1;
+    }
+    .pickedresultbox {
+        margin-inline: 40px;
+        // display: none;
+    }
+    .pickedbox {
+        margin-inline: 40px;
+    }
+    .pickedtitle {
+        order: 1;
+        margin-bottom: 30px;
+        letter-spacing: 2px;
+        margin-bottom: 50px;
+    }
+    .pickedouter {
+        height: 12rem;
+        width: 12rem;
+    }
+    .pickedinner {
+        height: 9.5rem;
+        width: 9.5rem;
     }
 }
