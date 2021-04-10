@@ -48,6 +48,7 @@ Mobile version
 - CSS custom properties
 - Flexbox
 - CSS Grid
+- SCSS
 - Mobile-first workflow
 - Vanilla Javascript
 - AJAX-like html refresh
